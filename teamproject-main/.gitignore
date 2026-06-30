@@ -1,0 +1,11 @@
+.DS_Store
+*.pcap
+*.pcap.zip
+named.conf.generated
+zones/
+scenario/auth/named.conf.generated
+scenario/auth/zones/
+scenario/external-auth/db.external.test
+__pycache__/
+*.pyc
+.env

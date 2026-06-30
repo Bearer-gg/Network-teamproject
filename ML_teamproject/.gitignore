@@ -1,0 +1,18 @@
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.ipynb_checkpoints/
+.DS_Store
+.venv/
+
+# Local generated datasets, reports and model artifacts are managed through DVC when initialized.
+data/raw/
+data/processed/
+data/manifests/
+runs/
+scratch/
+joblib/*.joblib
+metrics/*.json
+metrics/*.csv
+reports/*.csv
+notebook/runs/

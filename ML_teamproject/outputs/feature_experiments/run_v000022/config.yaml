@@ -1,0 +1,1017 @@
+analysis_type: feature_experiments
+base_run_version: v000022
+base_model_path: /Users/yes/ML_teamproject/runs/run_v000022/randomforest_v000022.joblib
+threshold: 0.3
+class_weight: balanced_subsample
+model_type: RandomForestClassifier
+model_params:
+  n_estimators: 200
+  min_samples_split: 2
+  min_samples_leaf: 4
+  max_features: log2
+  max_depth: 24
+  class_weight: balanced_subsample
+  random_state: 42
+  n_jobs: 1
+dataset_versions:
+- v000003
+- v000006
+- v000004
+- v000005
+train_dataset_versions:
+- v000003
+- v000006
+test_dataset_versions:
+- v000004
+- v000005
+evaluation_strategy: scenario_split_by_dataset_version
+class_ratio:
+  test:
+    attack: 2
+    normal: 8
+  train:
+    attack: 2
+    normal: 8
+source_processed_csv_files:
+- /Users/yes/ML_teamproject/data/processed/features_v000003.csv
+- /Users/yes/ML_teamproject/data/processed/features_v000006.csv
+- /Users/yes/ML_teamproject/data/processed/features_v000004.csv
+- /Users/yes/ML_teamproject/data/processed/features_v000005.csv
+train_row_count: 95270
+test_row_count: 82225
+class_distribution_train:
+  '0': 76216
+  '1': 19054
+class_distribution_test:
+  '0': 65780
+  '1': 16445
+base_feature_columns:
+- frame_len
+- ip_ttl
+- ip_proto
+- tcp_len
+- dst_port
+- dns_id
+- dns_flags_authoritative
+- dns_flags_truncated
+- dns_flags_recdesired
+- dns_flags_recavail
+- dns_flags_rcode
+- dns_count_queries
+- dns_count_answers
+- dns_count_auth_rr
+- dns_count_add_rr
+- record_total
+- answer_record_count
+- authority_record_count
+- additional_record_count
+- answer_A_count
+- answer_NS_count
+- answer_CNAME_count
+- answer_AAAA_count
+- authority_NS_count
+- authority_SOA_count
+- additional_A_count
+- additional_AAAA_count
+- additional_NS_count
+- additional_CNAME_count
+- ttl_std
+- unique_record_name_count
+- answer_matches_query_count
+- additional_out_of_bailiwick_count
+- has_answer
+- has_authority
+- has_additional
+- has_additional_A
+- has_authority_NS
+feature_sets:
+  all_current:
+  - frame_len
+  - ip_ttl
+  - ip_proto
+  - tcp_len
+  - dst_port
+  - dns_id
+  - dns_flags_authoritative
+  - dns_flags_truncated
+  - dns_flags_recdesired
+  - dns_flags_recavail
+  - dns_flags_rcode
+  - dns_count_queries
+  - dns_count_answers
+  - dns_count_auth_rr
+  - dns_count_add_rr
+  - record_total
+  - answer_record_count
+  - authority_record_count
+  - additional_record_count
+  - answer_A_count
+  - answer_NS_count
+  - answer_CNAME_count
+  - answer_AAAA_count
+  - authority_NS_count
+  - authority_SOA_count
+  - additional_A_count
+  - additional_AAAA_count
+  - additional_NS_count
+  - additional_CNAME_count
+  - ttl_std
+  - unique_record_name_count
+  - answer_matches_query_count
+  - additional_out_of_bailiwick_count
+  - has_answer
+  - has_authority
+  - has_additional
+  - has_additional_A
+  - has_authority_NS
+  dropped_shortcut_only:
+  - frame_len
+  - ip_len
+  - frame_cap_len
+  - udp_length
+  - src_port
+  - query_name_len
+  - query_entropy
+  - query_label_count
+  - ttl_mean
+  - ttl_min
+  - ttl_max
+  - ttl_std
+  top_importance_only:
+  - has_additional_A
+  - additional_A_count
+  - unique_record_name_count
+  - additional_out_of_bailiwick_count
+  - record_total
+  - answer_A_count
+  - dns_count_add_rr
+  - dns_count_answers
+  - additional_AAAA_count
+  - answer_record_count
+  dns_structure_only:
+  - dns_flags_authoritative
+  - dns_flags_truncated
+  - dns_flags_recdesired
+  - dns_flags_recavail
+  - dns_flags_rcode
+  - dns_count_queries
+  - dns_count_answers
+  - dns_count_auth_rr
+  - dns_count_add_rr
+  - record_total
+  - answer_record_count
+  - authority_record_count
+  - additional_record_count
+  - answer_A_count
+  - answer_NS_count
+  - answer_CNAME_count
+  - answer_AAAA_count
+  - authority_NS_count
+  - authority_SOA_count
+  - additional_A_count
+  - additional_AAAA_count
+  - additional_NS_count
+  - additional_CNAME_count
+  - unique_record_name_count
+  - answer_matches_query_count
+  - additional_out_of_bailiwick_count
+  - has_answer
+  - has_authority
+  - has_additional
+  - has_additional_A
+  - has_authority_NS
+  shortcut_suspects_only:
+  - frame_len
+  - ip_len
+  - frame_cap_len
+  - udp_length
+  - src_port
+  - query_name_len
+  - query_entropy
+  - query_label_count
+  - ttl_mean
+  - ttl_min
+  - ttl_max
+  - ttl_std
+  - has_additional_A
+  - additional_A_count
+  - unique_record_name_count
+  - additional_out_of_bailiwick_count
+  - record_total
+  - answer_A_count
+  - dns_count_add_rr
+  - dns_count_answers
+  - additional_AAAA_count
+  - answer_record_count
+  ablate_top__has_additional_A:
+  - frame_len
+  - ip_ttl
+  - ip_proto
+  - tcp_len
+  - dst_port
+  - dns_id
+  - dns_flags_authoritative
+  - dns_flags_truncated
+  - dns_flags_recdesired
+  - dns_flags_recavail
+  - dns_flags_rcode
+  - dns_count_queries
+  - dns_count_answers
+  - dns_count_auth_rr
+  - dns_count_add_rr
+  - record_total
+  - answer_record_count
+  - authority_record_count
+  - additional_record_count
+  - answer_A_count
+  - answer_NS_count
+  - answer_CNAME_count
+  - answer_AAAA_count
+  - authority_NS_count
+  - authority_SOA_count
+  - additional_A_count
+  - additional_AAAA_count
+  - additional_NS_count
+  - additional_CNAME_count
+  - ttl_std
+  - unique_record_name_count
+  - answer_matches_query_count
+  - additional_out_of_bailiwick_count
+  - has_answer
+  - has_authority
+  - has_additional
+  - has_authority_NS
+  ablate_top__additional_A_count:
+  - frame_len
+  - ip_ttl
+  - ip_proto
+  - tcp_len
+  - dst_port
+  - dns_id
+  - dns_flags_authoritative
+  - dns_flags_truncated
+  - dns_flags_recdesired
+  - dns_flags_recavail
+  - dns_flags_rcode
+  - dns_count_queries
+  - dns_count_answers
+  - dns_count_auth_rr
+  - dns_count_add_rr
+  - record_total
+  - answer_record_count
+  - authority_record_count
+  - additional_record_count
+  - answer_A_count
+  - answer_NS_count
+  - answer_CNAME_count
+  - answer_AAAA_count
+  - authority_NS_count
+  - authority_SOA_count
+  - additional_AAAA_count
+  - additional_NS_count
+  - additional_CNAME_count
+  - ttl_std
+  - unique_record_name_count
+  - answer_matches_query_count
+  - additional_out_of_bailiwick_count
+  - has_answer
+  - has_authority
+  - has_additional
+  - has_additional_A
+  - has_authority_NS
+  ablate_top__unique_record_name_count:
+  - frame_len
+  - ip_ttl
+  - ip_proto
+  - tcp_len
+  - dst_port
+  - dns_id
+  - dns_flags_authoritative
+  - dns_flags_truncated
+  - dns_flags_recdesired
+  - dns_flags_recavail
+  - dns_flags_rcode
+  - dns_count_queries
+  - dns_count_answers
+  - dns_count_auth_rr
+  - dns_count_add_rr
+  - record_total
+  - answer_record_count
+  - authority_record_count
+  - additional_record_count
+  - answer_A_count
+  - answer_NS_count
+  - answer_CNAME_count
+  - answer_AAAA_count
+  - authority_NS_count
+  - authority_SOA_count
+  - additional_A_count
+  - additional_AAAA_count
+  - additional_NS_count
+  - additional_CNAME_count
+  - ttl_std
+  - answer_matches_query_count
+  - additional_out_of_bailiwick_count
+  - has_answer
+  - has_authority
+  - has_additional
+  - has_additional_A
+  - has_authority_NS
+  ablate_top__additional_out_of_bailiwick_count:
+  - frame_len
+  - ip_ttl
+  - ip_proto
+  - tcp_len
+  - dst_port
+  - dns_id
+  - dns_flags_authoritative
+  - dns_flags_truncated
+  - dns_flags_recdesired
+  - dns_flags_recavail
+  - dns_flags_rcode
+  - dns_count_queries
+  - dns_count_answers
+  - dns_count_auth_rr
+  - dns_count_add_rr
+  - record_total
+  - answer_record_count
+  - authority_record_count
+  - additional_record_count
+  - answer_A_count
+  - answer_NS_count
+  - answer_CNAME_count
+  - answer_AAAA_count
+  - authority_NS_count
+  - authority_SOA_count
+  - additional_A_count
+  - additional_AAAA_count
+  - additional_NS_count
+  - additional_CNAME_count
+  - ttl_std
+  - unique_record_name_count
+  - answer_matches_query_count
+  - has_answer
+  - has_authority
+  - has_additional
+  - has_additional_A
+  - has_authority_NS
+  ablate_top__record_total:
+  - frame_len
+  - ip_ttl
+  - ip_proto
+  - tcp_len
+  - dst_port
+  - dns_id
+  - dns_flags_authoritative
+  - dns_flags_truncated
+  - dns_flags_recdesired
+  - dns_flags_recavail
+  - dns_flags_rcode
+  - dns_count_queries
+  - dns_count_answers
+  - dns_count_auth_rr
+  - dns_count_add_rr
+  - answer_record_count
+  - authority_record_count
+  - additional_record_count
+  - answer_A_count
+  - answer_NS_count
+  - answer_CNAME_count
+  - answer_AAAA_count
+  - authority_NS_count
+  - authority_SOA_count
+  - additional_A_count
+  - additional_AAAA_count
+  - additional_NS_count
+  - additional_CNAME_count
+  - ttl_std
+  - unique_record_name_count
+  - answer_matches_query_count
+  - additional_out_of_bailiwick_count
+  - has_answer
+  - has_authority
+  - has_additional
+  - has_additional_A
+  - has_authority_NS
+  ablate_top__answer_A_count:
+  - frame_len
+  - ip_ttl
+  - ip_proto
+  - tcp_len
+  - dst_port
+  - dns_id
+  - dns_flags_authoritative
+  - dns_flags_truncated
+  - dns_flags_recdesired
+  - dns_flags_recavail
+  - dns_flags_rcode
+  - dns_count_queries
+  - dns_count_answers
+  - dns_count_auth_rr
+  - dns_count_add_rr
+  - record_total
+  - answer_record_count
+  - authority_record_count
+  - additional_record_count
+  - answer_NS_count
+  - answer_CNAME_count
+  - answer_AAAA_count
+  - authority_NS_count
+  - authority_SOA_count
+  - additional_A_count
+  - additional_AAAA_count
+  - additional_NS_count
+  - additional_CNAME_count
+  - ttl_std
+  - unique_record_name_count
+  - answer_matches_query_count
+  - additional_out_of_bailiwick_count
+  - has_answer
+  - has_authority
+  - has_additional
+  - has_additional_A
+  - has_authority_NS
+  ablate_top__dns_count_add_rr:
+  - frame_len
+  - ip_ttl
+  - ip_proto
+  - tcp_len
+  - dst_port
+  - dns_id
+  - dns_flags_authoritative
+  - dns_flags_truncated
+  - dns_flags_recdesired
+  - dns_flags_recavail
+  - dns_flags_rcode
+  - dns_count_queries
+  - dns_count_answers
+  - dns_count_auth_rr
+  - record_total
+  - answer_record_count
+  - authority_record_count
+  - additional_record_count
+  - answer_A_count
+  - answer_NS_count
+  - answer_CNAME_count
+  - answer_AAAA_count
+  - authority_NS_count
+  - authority_SOA_count
+  - additional_A_count
+  - additional_AAAA_count
+  - additional_NS_count
+  - additional_CNAME_count
+  - ttl_std
+  - unique_record_name_count
+  - answer_matches_query_count
+  - additional_out_of_bailiwick_count
+  - has_answer
+  - has_authority
+  - has_additional
+  - has_additional_A
+  - has_authority_NS
+  ablate_top__dns_count_answers:
+  - frame_len
+  - ip_ttl
+  - ip_proto
+  - tcp_len
+  - dst_port
+  - dns_id
+  - dns_flags_authoritative
+  - dns_flags_truncated
+  - dns_flags_recdesired
+  - dns_flags_recavail
+  - dns_flags_rcode
+  - dns_count_queries
+  - dns_count_auth_rr
+  - dns_count_add_rr
+  - record_total
+  - answer_record_count
+  - authority_record_count
+  - additional_record_count
+  - answer_A_count
+  - answer_NS_count
+  - answer_CNAME_count
+  - answer_AAAA_count
+  - authority_NS_count
+  - authority_SOA_count
+  - additional_A_count
+  - additional_AAAA_count
+  - additional_NS_count
+  - additional_CNAME_count
+  - ttl_std
+  - unique_record_name_count
+  - answer_matches_query_count
+  - additional_out_of_bailiwick_count
+  - has_answer
+  - has_authority
+  - has_additional
+  - has_additional_A
+  - has_authority_NS
+  ablate_top__additional_AAAA_count:
+  - frame_len
+  - ip_ttl
+  - ip_proto
+  - tcp_len
+  - dst_port
+  - dns_id
+  - dns_flags_authoritative
+  - dns_flags_truncated
+  - dns_flags_recdesired
+  - dns_flags_recavail
+  - dns_flags_rcode
+  - dns_count_queries
+  - dns_count_answers
+  - dns_count_auth_rr
+  - dns_count_add_rr
+  - record_total
+  - answer_record_count
+  - authority_record_count
+  - additional_record_count
+  - answer_A_count
+  - answer_NS_count
+  - answer_CNAME_count
+  - answer_AAAA_count
+  - authority_NS_count
+  - authority_SOA_count
+  - additional_A_count
+  - additional_NS_count
+  - additional_CNAME_count
+  - ttl_std
+  - unique_record_name_count
+  - answer_matches_query_count
+  - additional_out_of_bailiwick_count
+  - has_answer
+  - has_authority
+  - has_additional
+  - has_additional_A
+  - has_authority_NS
+  ablate_top__answer_record_count:
+  - frame_len
+  - ip_ttl
+  - ip_proto
+  - tcp_len
+  - dst_port
+  - dns_id
+  - dns_flags_authoritative
+  - dns_flags_truncated
+  - dns_flags_recdesired
+  - dns_flags_recavail
+  - dns_flags_rcode
+  - dns_count_queries
+  - dns_count_answers
+  - dns_count_auth_rr
+  - dns_count_add_rr
+  - record_total
+  - authority_record_count
+  - additional_record_count
+  - answer_A_count
+  - answer_NS_count
+  - answer_CNAME_count
+  - answer_AAAA_count
+  - authority_NS_count
+  - authority_SOA_count
+  - additional_A_count
+  - additional_AAAA_count
+  - additional_NS_count
+  - additional_CNAME_count
+  - ttl_std
+  - unique_record_name_count
+  - answer_matches_query_count
+  - additional_out_of_bailiwick_count
+  - has_answer
+  - has_authority
+  - has_additional
+  - has_additional_A
+  - has_authority_NS
+  add_back_dropped__ip_len:
+  - frame_len
+  - ip_ttl
+  - ip_proto
+  - tcp_len
+  - dst_port
+  - dns_id
+  - dns_flags_authoritative
+  - dns_flags_truncated
+  - dns_flags_recdesired
+  - dns_flags_recavail
+  - dns_flags_rcode
+  - dns_count_queries
+  - dns_count_answers
+  - dns_count_auth_rr
+  - dns_count_add_rr
+  - record_total
+  - answer_record_count
+  - authority_record_count
+  - additional_record_count
+  - answer_A_count
+  - answer_NS_count
+  - answer_CNAME_count
+  - answer_AAAA_count
+  - authority_NS_count
+  - authority_SOA_count
+  - additional_A_count
+  - additional_AAAA_count
+  - additional_NS_count
+  - additional_CNAME_count
+  - ttl_std
+  - unique_record_name_count
+  - answer_matches_query_count
+  - additional_out_of_bailiwick_count
+  - has_answer
+  - has_authority
+  - has_additional
+  - has_additional_A
+  - has_authority_NS
+  - ip_len
+  add_back_dropped__frame_cap_len:
+  - frame_len
+  - ip_ttl
+  - ip_proto
+  - tcp_len
+  - dst_port
+  - dns_id
+  - dns_flags_authoritative
+  - dns_flags_truncated
+  - dns_flags_recdesired
+  - dns_flags_recavail
+  - dns_flags_rcode
+  - dns_count_queries
+  - dns_count_answers
+  - dns_count_auth_rr
+  - dns_count_add_rr
+  - record_total
+  - answer_record_count
+  - authority_record_count
+  - additional_record_count
+  - answer_A_count
+  - answer_NS_count
+  - answer_CNAME_count
+  - answer_AAAA_count
+  - authority_NS_count
+  - authority_SOA_count
+  - additional_A_count
+  - additional_AAAA_count
+  - additional_NS_count
+  - additional_CNAME_count
+  - ttl_std
+  - unique_record_name_count
+  - answer_matches_query_count
+  - additional_out_of_bailiwick_count
+  - has_answer
+  - has_authority
+  - has_additional
+  - has_additional_A
+  - has_authority_NS
+  - frame_cap_len
+  add_back_dropped__udp_length:
+  - frame_len
+  - ip_ttl
+  - ip_proto
+  - tcp_len
+  - dst_port
+  - dns_id
+  - dns_flags_authoritative
+  - dns_flags_truncated
+  - dns_flags_recdesired
+  - dns_flags_recavail
+  - dns_flags_rcode
+  - dns_count_queries
+  - dns_count_answers
+  - dns_count_auth_rr
+  - dns_count_add_rr
+  - record_total
+  - answer_record_count
+  - authority_record_count
+  - additional_record_count
+  - answer_A_count
+  - answer_NS_count
+  - answer_CNAME_count
+  - answer_AAAA_count
+  - authority_NS_count
+  - authority_SOA_count
+  - additional_A_count
+  - additional_AAAA_count
+  - additional_NS_count
+  - additional_CNAME_count
+  - ttl_std
+  - unique_record_name_count
+  - answer_matches_query_count
+  - additional_out_of_bailiwick_count
+  - has_answer
+  - has_authority
+  - has_additional
+  - has_additional_A
+  - has_authority_NS
+  - udp_length
+  add_back_dropped__src_port:
+  - frame_len
+  - ip_ttl
+  - ip_proto
+  - tcp_len
+  - dst_port
+  - dns_id
+  - dns_flags_authoritative
+  - dns_flags_truncated
+  - dns_flags_recdesired
+  - dns_flags_recavail
+  - dns_flags_rcode
+  - dns_count_queries
+  - dns_count_answers
+  - dns_count_auth_rr
+  - dns_count_add_rr
+  - record_total
+  - answer_record_count
+  - authority_record_count
+  - additional_record_count
+  - answer_A_count
+  - answer_NS_count
+  - answer_CNAME_count
+  - answer_AAAA_count
+  - authority_NS_count
+  - authority_SOA_count
+  - additional_A_count
+  - additional_AAAA_count
+  - additional_NS_count
+  - additional_CNAME_count
+  - ttl_std
+  - unique_record_name_count
+  - answer_matches_query_count
+  - additional_out_of_bailiwick_count
+  - has_answer
+  - has_authority
+  - has_additional
+  - has_additional_A
+  - has_authority_NS
+  - src_port
+  add_back_dropped__query_name_len:
+  - frame_len
+  - ip_ttl
+  - ip_proto
+  - tcp_len
+  - dst_port
+  - dns_id
+  - dns_flags_authoritative
+  - dns_flags_truncated
+  - dns_flags_recdesired
+  - dns_flags_recavail
+  - dns_flags_rcode
+  - dns_count_queries
+  - dns_count_answers
+  - dns_count_auth_rr
+  - dns_count_add_rr
+  - record_total
+  - answer_record_count
+  - authority_record_count
+  - additional_record_count
+  - answer_A_count
+  - answer_NS_count
+  - answer_CNAME_count
+  - answer_AAAA_count
+  - authority_NS_count
+  - authority_SOA_count
+  - additional_A_count
+  - additional_AAAA_count
+  - additional_NS_count
+  - additional_CNAME_count
+  - ttl_std
+  - unique_record_name_count
+  - answer_matches_query_count
+  - additional_out_of_bailiwick_count
+  - has_answer
+  - has_authority
+  - has_additional
+  - has_additional_A
+  - has_authority_NS
+  - query_name_len
+  add_back_dropped__query_entropy:
+  - frame_len
+  - ip_ttl
+  - ip_proto
+  - tcp_len
+  - dst_port
+  - dns_id
+  - dns_flags_authoritative
+  - dns_flags_truncated
+  - dns_flags_recdesired
+  - dns_flags_recavail
+  - dns_flags_rcode
+  - dns_count_queries
+  - dns_count_answers
+  - dns_count_auth_rr
+  - dns_count_add_rr
+  - record_total
+  - answer_record_count
+  - authority_record_count
+  - additional_record_count
+  - answer_A_count
+  - answer_NS_count
+  - answer_CNAME_count
+  - answer_AAAA_count
+  - authority_NS_count
+  - authority_SOA_count
+  - additional_A_count
+  - additional_AAAA_count
+  - additional_NS_count
+  - additional_CNAME_count
+  - ttl_std
+  - unique_record_name_count
+  - answer_matches_query_count
+  - additional_out_of_bailiwick_count
+  - has_answer
+  - has_authority
+  - has_additional
+  - has_additional_A
+  - has_authority_NS
+  - query_entropy
+  add_back_dropped__query_label_count:
+  - frame_len
+  - ip_ttl
+  - ip_proto
+  - tcp_len
+  - dst_port
+  - dns_id
+  - dns_flags_authoritative
+  - dns_flags_truncated
+  - dns_flags_recdesired
+  - dns_flags_recavail
+  - dns_flags_rcode
+  - dns_count_queries
+  - dns_count_answers
+  - dns_count_auth_rr
+  - dns_count_add_rr
+  - record_total
+  - answer_record_count
+  - authority_record_count
+  - additional_record_count
+  - answer_A_count
+  - answer_NS_count
+  - answer_CNAME_count
+  - answer_AAAA_count
+  - authority_NS_count
+  - authority_SOA_count
+  - additional_A_count
+  - additional_AAAA_count
+  - additional_NS_count
+  - additional_CNAME_count
+  - ttl_std
+  - unique_record_name_count
+  - answer_matches_query_count
+  - additional_out_of_bailiwick_count
+  - has_answer
+  - has_authority
+  - has_additional
+  - has_additional_A
+  - has_authority_NS
+  - query_label_count
+  add_back_dropped__ttl_mean:
+  - frame_len
+  - ip_ttl
+  - ip_proto
+  - tcp_len
+  - dst_port
+  - dns_id
+  - dns_flags_authoritative
+  - dns_flags_truncated
+  - dns_flags_recdesired
+  - dns_flags_recavail
+  - dns_flags_rcode
+  - dns_count_queries
+  - dns_count_answers
+  - dns_count_auth_rr
+  - dns_count_add_rr
+  - record_total
+  - answer_record_count
+  - authority_record_count
+  - additional_record_count
+  - answer_A_count
+  - answer_NS_count
+  - answer_CNAME_count
+  - answer_AAAA_count
+  - authority_NS_count
+  - authority_SOA_count
+  - additional_A_count
+  - additional_AAAA_count
+  - additional_NS_count
+  - additional_CNAME_count
+  - ttl_std
+  - unique_record_name_count
+  - answer_matches_query_count
+  - additional_out_of_bailiwick_count
+  - has_answer
+  - has_authority
+  - has_additional
+  - has_additional_A
+  - has_authority_NS
+  - ttl_mean
+  add_back_dropped__ttl_min:
+  - frame_len
+  - ip_ttl
+  - ip_proto
+  - tcp_len
+  - dst_port
+  - dns_id
+  - dns_flags_authoritative
+  - dns_flags_truncated
+  - dns_flags_recdesired
+  - dns_flags_recavail
+  - dns_flags_rcode
+  - dns_count_queries
+  - dns_count_answers
+  - dns_count_auth_rr
+  - dns_count_add_rr
+  - record_total
+  - answer_record_count
+  - authority_record_count
+  - additional_record_count
+  - answer_A_count
+  - answer_NS_count
+  - answer_CNAME_count
+  - answer_AAAA_count
+  - authority_NS_count
+  - authority_SOA_count
+  - additional_A_count
+  - additional_AAAA_count
+  - additional_NS_count
+  - additional_CNAME_count
+  - ttl_std
+  - unique_record_name_count
+  - answer_matches_query_count
+  - additional_out_of_bailiwick_count
+  - has_answer
+  - has_authority
+  - has_additional
+  - has_additional_A
+  - has_authority_NS
+  - ttl_min
+  add_back_dropped__ttl_max:
+  - frame_len
+  - ip_ttl
+  - ip_proto
+  - tcp_len
+  - dst_port
+  - dns_id
+  - dns_flags_authoritative
+  - dns_flags_truncated
+  - dns_flags_recdesired
+  - dns_flags_recavail
+  - dns_flags_rcode
+  - dns_count_queries
+  - dns_count_answers
+  - dns_count_auth_rr
+  - dns_count_add_rr
+  - record_total
+  - answer_record_count
+  - authority_record_count
+  - additional_record_count
+  - answer_A_count
+  - answer_NS_count
+  - answer_CNAME_count
+  - answer_AAAA_count
+  - authority_NS_count
+  - authority_SOA_count
+  - additional_A_count
+  - additional_AAAA_count
+  - additional_NS_count
+  - additional_CNAME_count
+  - ttl_std
+  - unique_record_name_count
+  - answer_matches_query_count
+  - additional_out_of_bailiwick_count
+  - has_answer
+  - has_authority
+  - has_additional
+  - has_additional_A
+  - has_authority_NS
+  - ttl_max
+dropped_shortcut_features:
+- frame_len
+- ip_len
+- frame_cap_len
+- udp_length
+- src_port
+- query_name_len
+- query_entropy
+- query_label_count
+- ttl_mean
+- ttl_min
+- ttl_max
+- ttl_std
+top_importance_features:
+- has_additional_A
+- additional_A_count
+- unique_record_name_count
+- additional_out_of_bailiwick_count
+- record_total
+- answer_A_count
+- dns_count_add_rr
+- dns_count_answers
+- additional_AAAA_count
+- answer_record_count
+created_at_utc: '2026-05-27T21:20:11.115075+00:00'
+outputs:
+  metrics_summary: /Users/yes/ML_teamproject/outputs/feature_experiments/run_v000022/metrics_summary.csv
+  confusion_matrices: /Users/yes/ML_teamproject/outputs/feature_experiments/run_v000022/confusion_matrices.csv
+  feature_importances: /Users/yes/ML_teamproject/outputs/feature_experiments/run_v000022/feature_importances.csv
+  feature_statistics: /Users/yes/ML_teamproject/outputs/feature_experiments/run_v000022/feature_statistics.csv
+  probability_summary: /Users/yes/ML_teamproject/outputs/feature_experiments/run_v000022/probability_summary.csv
+  plots_dir: /Users/yes/ML_teamproject/outputs/feature_experiments/run_v000022/plots

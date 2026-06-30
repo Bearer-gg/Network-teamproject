@@ -1,0 +1,11 @@
+dataset_version: v000001
+dataset:
+  pcap: data/raw/dataset_v000001.pcap
+  resolver_ip: REPLACE_WITH_RESOLVER_IP
+  capture_scope: resolver-bound
+training:
+  run_version: v000001
+  # Space-separated versions are allowed on both sides.
+  train_dataset_versions: v000001
+  test_dataset_versions: v000002
+  config: config/randomforest.yaml

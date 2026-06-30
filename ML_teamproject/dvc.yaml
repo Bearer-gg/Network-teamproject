@@ -1,0 +1,76 @@
+stages:
+  build_dataset:
+    cmd: >-
+      python main.py build-dataset
+      --pcap ${dataset.pcap}
+      --resolver-ip ${dataset.resolver_ip}
+      --capture-scope ${dataset.capture_scope}
+      --dataset-version ${dataset_version}
+      --overwrite
+    deps:
+      - main.py
+      - pipeline/dataset.py
+      - pipeline/features.py
+      - pipeline/schema.py
+      - pipeline/versioning.py
+      - ${dataset.pcap}
+    params:
+      - dataset_version
+      - dataset.pcap
+      - dataset.resolver_ip
+      - dataset.capture_scope
+    outs:
+      - data/processed/features_${dataset_version}.csv
+      - data/manifests/dataset_${dataset_version}.yaml
+  prepare_run:
+    cmd: >-
+      python main.py prepare-run
+      --run-version ${training.run_version}
+      --train-dataset-versions "${training.train_dataset_versions}"
+      --test-dataset-versions "${training.test_dataset_versions}"
+      --config ${training.config}
+      --overwrite
+    deps:
+      - main.py
+      - pipeline/training.py
+      - pipeline/versioning.py
+      - ${training.config}
+      # The manifest selects/checksums every listed train/test CSV.
+      - data/processed
+    params:
+      - dataset_version
+      - training.run_version
+      - training.train_dataset_versions
+      - training.test_dataset_versions
+      - training.config
+    outs:
+      - runs/run_${training.run_version}/run_input_manifest_${training.run_version}.yaml
+  train_run:
+    cmd: >-
+      python main.py train
+      --run-version ${training.run_version}
+      --train-dataset-versions "${training.train_dataset_versions}"
+      --test-dataset-versions "${training.test_dataset_versions}"
+      --run-manifest runs/run_${training.run_version}/run_input_manifest_${training.run_version}.yaml
+      --config ${training.config}
+      --overwrite
+    deps:
+      - main.py
+      - pipeline/schema.py
+      - pipeline/training.py
+      - notebook/detection.ipynb
+      - ${training.config}
+      - runs/run_${training.run_version}/run_input_manifest_${training.run_version}.yaml
+    params:
+      - dataset_version
+      - training.run_version
+      - training.train_dataset_versions
+      - training.test_dataset_versions
+      - training.config
+    outs:
+      - runs/run_${training.run_version}
+    metrics:
+      - metrics/metrics_summary.csv:
+          cache: false
+      - runs/run_${training.run_version}/metrics_run_${training.run_version}.json:
+          cache: false

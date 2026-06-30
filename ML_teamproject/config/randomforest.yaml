@@ -1,0 +1,72 @@
+random_seed: 42
+test_size: 0.2
+search_iterations: 12
+cv_folds: 3
+# Keep concurrent candidate fitting modest for a 16 GB Mac mini.
+search_n_jobs: 4
+model_n_jobs: 1
+scoring: f1
+decision_thresholds: [0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9]
+class_weight_grid:
+  - null
+  - balanced
+  - balanced_subsample
+  - {0: 1, 1: 2}
+  - {0: 1, 1: 4}
+  - {0: 1, 1: 8}
+# Desired normal:attack mix after selected datasets are combined.
+# Set a split to null to keep all rows from that split.
+class_ratio:
+  train: "8:2"
+  test: "8:2"
+selected_feature_columns:
+  - has_additional_A
+  - additional_A_count
+  - unique_record_name_count
+  - additional_out_of_bailiwick_count
+  - record_total
+  - answer_A_count
+  - dns_count_add_rr
+  - dns_count_answers
+  - additional_AAAA_count
+  - answer_record_count
+# Never fit raw domain/IP text or indicators used to assign the label.
+excluded_feature_columns:
+  - qname
+  - answer_name
+  - authority_name
+  - additional_name
+  - answer_value
+  - authority_value
+  - additional_value
+  - contains_bank_test
+  - contains_fake_ip
+  - domain_string
+  - ip_string
+  # Names currently present in processed CSV for the same leakage policy.
+  - answer_ips
+  - label_domain_match
+  - label_ip_match
+  - src_ip
+  - dst_ip
+  - label_rule
+  # v5 에서 제거하는 피처들
+  - ip_len
+  - frame_cap_len
+  - frame_cap_len
+  - udp_length
+  - src_port
+  - ttl_min
+  - ttl_max
+  - ttl_mean
+  # v6 에서 제거하는 피처들 (도메인 관련 아예 제거)
+  - query_entropy
+  - query_name_len
+  - query_label_count
+parameter_distributions:
+  n_estimators: [100, 200, 300]
+  max_depth: [null, 8, 16, 24]
+  min_samples_split: [2, 5, 10]
+  min_samples_leaf: [1, 2, 4]
+  max_features: [sqrt, log2]
+  class_weight: [balanced, balanced_subsample]
